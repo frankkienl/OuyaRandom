@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:layout_margin="25dp">
+    
+    <TextView 
+        android:id="@+id/main_tv"
+        android:text="I dont have an OUYA, please tell me on Google+ what works and what not.\nThanks in advance.\nFrank Bouwens - frankkie12345@gmail.com"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+    />
+    
+    <LinearLayout 
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    
+        <LinearLayout 
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent">
+            <Button 
+                android:id="@+id/controller_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Controller Test"
+            />
+            <Button 
+                android:id="@+id/hardware_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Hardware Test"
+            />
+        </LinearLayout>
+        <LinearLayout 
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent">
+            <Button 
+                android:id="@+id/viewport_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="ViewPort Test" />
+            <Button 
+                android:id="@+id/wifikill_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="WiFi Kill" />
+        </LinearLayout>
+    
+    </LinearLayout>
+    
+</LinearLayout>
+

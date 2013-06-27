@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:layout_margin="25dp">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal">
+            
+                <Button 
+                    android:id="@+id/wifikill_on"
+                    android:text="ON"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                />
+                <Button 
+                    android:id="@+id/wifikill_off"
+                    android:text="OFF"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                />
+            </LinearLayout>
+            <TextView 
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/wifikill_tv"
+                android:text="Dummy Text"
+            />
+              <Button 
+                    android:id="@+id/wifikill_refresh"
+                    android:text="Refresh Status"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                />
+            <Button 
+                    android:id="@+id/wifikill_now"
+                    android:text="KILL NOW"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
