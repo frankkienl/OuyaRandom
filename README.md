@@ -6,6 +6,8 @@ I have no idea if it works, I don't have an OUYA yet.
 
 Download APK: https://github.com/frankkienl/OuyaRandom/raw/master/OuyaRandom/OuyaRandom.apk
 
+![Screenshot](https://raw.github.com/frankkienl/OuyaRandom/master/screenshots/ouya_wifikill.png "Screenshot")
+
 Licence
 -------
 
