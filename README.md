@@ -4,6 +4,8 @@ OUYA Random Tests
 Some tests to run on an OUYA.
 I have no idea if it works, I don't have an OUYA yet.
 
+Download APK: https://github.com/frankkienl/OuyaRandom/raw/master/OuyaRandom/OuyaRandom.apk
+
 Licence
 -------
 
