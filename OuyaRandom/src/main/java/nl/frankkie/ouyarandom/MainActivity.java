@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import nl.frankkie.ouyarandom.minigame.ShootGameActivity;
+
 import java.util.ArrayList;
 
 public class MainActivity extends Activity {
@@ -38,6 +40,7 @@ public class MainActivity extends Activity {
         tests.add(new RandomTest("Controller", ControllerActivity.class));
         tests.add(new RandomTest("Viewport", ViewportActivity.class));
         tests.add(new RandomTest("Discover", DiscoverTestActivity.class));
+        tests.add(new RandomTest("Minigame", ShootGameActivity.class));
     }
 
     public void makeButtons() {

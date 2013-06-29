@@ -34,6 +34,7 @@
         <activity android:name=".DiscoverTestActivity"/>
         <activity android:name=".DataUriActivity"/>
         <activity android:name=".AppListActivity" />
+        <activity android:name=".minigame.ShootGameActivity" />
 
         <receiver
                 android:name=".WiFiKillReceiver"
