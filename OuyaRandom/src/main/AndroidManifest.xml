@@ -27,6 +27,8 @@
 
         <activity android:name=".HardwareActivity"/>
         <activity android:name=".ControllerActivity"/>
+        <activity android:name=".ControllerTestActivity"/>
+        <activity android:name="tv.ouya.controllertest.ControllerTestActivity" />
         <activity android:name=".ViewportActivity"/>
         <activity android:name=".WiFiKillActivity"/>
         <activity android:name=".DiscoverTestActivity"/>

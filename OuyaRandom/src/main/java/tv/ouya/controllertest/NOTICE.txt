@@ -1,0 +1,3 @@
+OUYA Software Development Kit
+Copyright 2012 OUYA, Inc.
+This product includes software developed by OUYA, Inc. (http://www.ouya.tv/).

@@ -7,7 +7,7 @@
     
     <TextView 
         android:id="@+id/main_tv"
-        android:text="I dont have an OUYA, please tell me on Google+ what works and what not.\nThanks in advance.\nFrank Bouwens - frankkie12345@gmail.com"
+        android:text="DISCLAMER: I am not responsible if your OUYA stops working after using this software.\nYou have decided to use this, so it is you own responsibility! This is not a Game.\nIf you don't want to take the risk, uninstall this app now.\nQuestions or Suggestions? Find me on Google+ - +Frank Bouwens ( frankkie12345 AT gmail DOT com )"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
     />
