@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:layout_margin="25dp"
+>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Test data uri intent"
+                android:id="@+id/datauri_tv"
+            />
+            <EditText 
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="data uri here"
+                android:text="content://downloads/all_downloads"
+                android:id="@+id/datauri_ed"
+            />
+            <Button 
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="test data uri intent"
+                android:id="@+id/datauri_btn"
+            />
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Try these:\ncontent://downloads/all_downloads\ncontent://downloads/my_downloads\ncontent://downloads/public_downloads"
+            />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+

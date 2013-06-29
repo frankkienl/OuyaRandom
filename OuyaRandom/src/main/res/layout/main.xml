@@ -12,47 +12,15 @@
         android:layout_height="wrap_content"
     />
     
-    <LinearLayout 
-        android:orientation="horizontal"
+    <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
-    
         <LinearLayout 
+            android:id="@+id/main_container"
             android:orientation="vertical"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent">
-            <Button 
-                android:id="@+id/controller_btn"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Controller Test"
-            />
-            <Button 
-                android:id="@+id/hardware_btn"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Hardware Test"
-            />
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
         </LinearLayout>
-        <LinearLayout 
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent">
-            <Button 
-                android:id="@+id/viewport_btn"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="ViewPort Test" />
-            <Button 
-                android:id="@+id/wifikill_btn"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="WiFi Kill" />
-        </LinearLayout>
-    
-    </LinearLayout>
-    
+    </ScrollView>
 </LinearLayout>
 

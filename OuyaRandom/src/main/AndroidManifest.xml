@@ -29,6 +29,9 @@
         <activity android:name=".ControllerActivity"/>
         <activity android:name=".ViewportActivity"/>
         <activity android:name=".WiFiKillActivity"/>
+        <activity android:name=".DiscoverTestActivity"/>
+        <activity android:name=".DataUriActivity"/>
+        <activity android:name=".AppListActivity" />
 
         <receiver
                 android:name=".WiFiKillReceiver"
