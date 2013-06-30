@@ -1,10 +1,10 @@
 package nl.frankkie.ouyarandom.minigame;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.*;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -14,6 +14,7 @@ import tv.ouya.console.api.OuyaController;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Created by Gebruiker on 29-6-13.
@@ -27,7 +28,7 @@ public class ShootGameView extends View {
     long frame = 0;
     OuyaController controller;
     Player player;
-    ArrayList<Stuff> stuffs = new ArrayList<Stuff>();
+    CopyOnWriteArrayList<Stuff> stuffs = new CopyOnWriteArrayList<Stuff>();
     long lastFpsTime = 0;
     int showFps = 0;
     int fps = 0;
@@ -36,8 +37,7 @@ public class ShootGameView extends View {
     Handler handler = new Handler();
     long lastShoot = 0;
     long shootDelay = 250;
-    Object shootLock = new Object();
-    boolean shootAdd = true;
+    Bitmap drawBitmap;
 
     public ShootGameView(Context context) {
         super(context);
@@ -58,6 +58,8 @@ public class ShootGameView extends View {
         paint = new Paint();
         paint.setStyle(Paint.Style.FILL);
         screen = new Rect(0, 0, 1920, 1080);
+        Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
+        drawBitmap = Bitmap.createBitmap(screen.width(), screen.height(), conf); // this creates a MUTABLE bitmap
         controller = OuyaController.getControllerByPlayer(0);
         player = new Player();
         stuffs.add(player);
@@ -69,22 +71,7 @@ public class ShootGameView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        //super.onDraw(canvas);
-        paint.setColor(Color.BLACK);
-        canvas.drawRect(screen, paint); //clear screen
-        paint.setColor(Color.WHITE);
-        paint.setTextSize(22);
-        canvas.drawText("Score: " + score, 150f, 200f, paint);
-        canvas.drawText("Frame: " + (frame++), 150f, 250f, paint);
-        canvas.drawText("FPS: " + (showFps), 150f, 300f, paint);
-//        player.drawMe(canvas,paint);
-        synchronized (shootLock) {
-            shootAdd = false;
-            for (Stuff s : stuffs) {
-                s.drawMe(canvas, paint);
-            }
-        }
-        shootAdd = true;
+        render(canvas);
     }
 
     @Override
@@ -165,6 +152,7 @@ public class ShootGameView extends View {
 
             // draw everyting
             //postInvalidate();
+            //render();
             handler.post(new Runnable() {
                 @Override
                 public void run() {
@@ -187,29 +175,76 @@ public class ShootGameView extends View {
         }
     }
 
+    private void render(Canvas canvas) {
+        //Bitmap.Config conf = Bitmap.Config.ARGB_8888; // see other conf types
+        //drawBitmap = Bitmap.createBitmap(screen.width(), screen.height(), conf); // this creates a MUTABLE bitmap
+        //synchronized (drawBitmap) {
+        //Canvas canvas = new Canvas(drawBitmap);
+        //super.onDraw(canvas);
+        paint.setColor(Color.BLACK);
+        canvas.drawRect(screen, paint); //clear screen
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(22);
+        canvas.drawText("Score: " + score, 150f, 200f, paint);
+        canvas.drawText("Frame: " + (frame++), 150f, 250f, paint);
+        canvas.drawText("FPS: " + (showFps), 150f, 300f, paint);
+//        player.drawMe(canvas,paint);
+        for (Stuff s : stuffs) {
+            s.drawMe(canvas, paint);
+        }
+    }
+
     private void doGameUpdates(double delta) {
         for (int i = 0; i < stuffs.size(); i++) {
             // all time-related values must be multiplied by delta!
             Stuff s = stuffs.get(i);
             s.move(delta);
-            //other updates
-            float rx = controller.getAxisValue(OuyaController.AXIS_RS_X);
-            float ry = controller.getAxisValue(OuyaController.AXIS_RS_Y);
-            float deadzone = 0.25f;
-            if (Math.abs(pointDistance(0, 0, rx, ry)) > deadzone) {
-                if ((System.currentTimeMillis() - shootDelay) > lastShoot) {
-                    lastShoot = System.currentTimeMillis();
-                    synchronized (shootLock) {
-                        if (shootAdd) {
-                            stuffs.add(new Shoot(player.positionX + (player.width / 2) - (56 / 2), player.positionY + (player.height / 2) - (56 / 2), pointDirection(0, 0, rx, ry)));
-                        } else {
-                            //Delay a frame :C
-                            lastShoot = 0;
+            if (s.type.equals("shoot")) {
+                Stuff other = s.collision("enemy");
+                if (other != null) {
+                    stuffs.remove(other);
+                    stuffs.remove(s);
+                    score++;
+                    // make a new enemy, to keep the game going
+                    stuffs.add(new Enemy());
+                }
+            }
+            if (s.type.equals("player")) {
+                Stuff other = s.collision("enemy");
+                if (other != null) {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            gameOver();
                         }
-                    }
+                    });
                 }
             }
         }
+        //other updates
+        float rx = controller.getAxisValue(OuyaController.AXIS_RS_X);
+        float ry = controller.getAxisValue(OuyaController.AXIS_RS_Y);
+        float deadzone = 0.25f;
+        if (Math.abs(pointDistance(0, 0, rx, ry)) > deadzone) {
+            if ((System.currentTimeMillis() - shootDelay) > lastShoot) {
+                lastShoot = System.currentTimeMillis();
+                stuffs.add(new Shoot(player.positionX + (player.width / 2) - (56 / 2), player.positionY + (player.height / 2) - (56 / 2), pointDirection(0, 0, rx, ry)));
+            }
+        }
+    }
+
+    void gameOver() {
+        gameRunning = false;
+        AlertDialog.Builder b = new AlertDialog.Builder(context);
+        b.setTitle("Game Over");
+        b.setMessage("Score: " + score);
+        b.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                ((Activity) context).finish();
+            }
+        });
+        b.create().show();
     }
 
     public static float pointDirection(float x1, float y1, float x2, float y2) {
@@ -249,9 +284,27 @@ public class ShootGameView extends View {
         Bitmap image;
         boolean outsideWrap = false;
         boolean limitAtEdge = false;
+        String type = "stuff";
 
         public void drawMe(Canvas c, Paint p) {
             c.drawBitmap(image, positionX, positionY, p);
+        }
+
+        public Stuff collision(String otherKind) {
+            for (Stuff s : stuffs) {
+                if (!s.type.equals(otherKind)) {
+                    continue;
+                }
+                if (s.equals(this)) {
+                    continue; //collision with yourself does not count xD
+                }
+                RectF me = new RectF(positionX, positionY, positionX + width, positionY + height);
+                RectF other = new RectF(s.positionX, s.positionY, s.positionX + width, s.positionY + height);
+                if (me.intersect(other)) {
+                    return s;
+                }
+            }
+            return null;
         }
 
         public void move(double delta) {
@@ -302,6 +355,7 @@ public class ShootGameView extends View {
             width = 64;
             height = 64;
             outsideWrap = true;
+            type = "enemy";
             Random r = new Random();
             boolean hor = r.nextBoolean();
             boolean top = r.nextBoolean();
@@ -331,6 +385,7 @@ public class ShootGameView extends View {
             image = BitmapFactory.decodeResource(context.getResources(), R.drawable.android_small);
             width = 96;
             height = 96;
+            type = "player";
             positionX = screen.exactCenterX() - (width / 2);
             positionY = screen.exactCenterY() - (height / 2);
             limitAtEdge = true;
@@ -347,6 +402,7 @@ public class ShootGameView extends View {
             positionY = y;
             this.direction = direction;
             velocity = 15;
+            type = "shoot";
         }
 
         @Override
@@ -359,6 +415,3 @@ public class ShootGameView extends View {
         }
     }
 }
-
-
-
