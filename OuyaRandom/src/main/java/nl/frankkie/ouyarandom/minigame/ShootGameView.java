@@ -17,7 +17,7 @@ import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * Created by Gebruiker on 29-6-13.
+ * Created by FrankkieNL on 29-6-13.
  */
 public class ShootGameView extends View {
 

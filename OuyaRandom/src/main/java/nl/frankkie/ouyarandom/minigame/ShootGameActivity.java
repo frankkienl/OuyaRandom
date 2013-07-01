@@ -9,7 +9,7 @@ import android.view.WindowManager;
 import tv.ouya.console.api.OuyaController;
 
 /**
- * Created by Gebruiker on 29-6-13.
+ * Created by FrankkieNL on 29-6-13.
  */
 public class ShootGameActivity extends Activity {
 

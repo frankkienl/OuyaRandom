@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 /**
  *
- * @author frankkie
+ * @author FrankkieNL
  */
 public class DataUriActivity extends Activity {
   /** Called when the activity is first created. */

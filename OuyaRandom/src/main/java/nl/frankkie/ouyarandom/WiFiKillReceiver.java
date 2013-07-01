@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 /**
  *
- * @author Gebruiker
+ * @author FrankkieNL
  */
 public class WiFiKillReceiver extends BroadcastReceiver {
 

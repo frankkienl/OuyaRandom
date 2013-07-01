@@ -33,14 +33,15 @@ public class MainActivity extends Activity {
 
     public void makeTests() {
         tests.clear();
+        tests.add(new RandomTest("Controller", ControllerActivity.class));
+        tests.add(new RandomTest("Minigame", ShootGameActivity.class));
+        tests.add(new RandomTest("Updates", UpdateCheckActivity.class));
         tests.add(new RandomTest("WiFiKill", WiFiKillActivity.class));
         tests.add(new RandomTest("Hardware", HardwareActivity.class));
         tests.add(new RandomTest("AppList", AppListActivity.class));
         tests.add(new RandomTest("DataURI", DataUriActivity.class));
-        tests.add(new RandomTest("Controller", ControllerActivity.class));
         tests.add(new RandomTest("Viewport", ViewportActivity.class));
         tests.add(new RandomTest("Discover", DiscoverTestActivity.class));
-        tests.add(new RandomTest("Minigame", ShootGameActivity.class));
     }
 
     public void makeButtons() {

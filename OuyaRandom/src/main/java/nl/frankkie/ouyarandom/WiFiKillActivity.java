@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 /**
  *
- * @author Gebruiker
+ * @author FrankkieNL
  */
 public class WiFiKillActivity extends Activity {
 
@@ -64,7 +64,7 @@ public class WiFiKillActivity extends Activity {
         StringBuilder s = new StringBuilder();
         s.append("WiFiKill is currently: ").append((wifikill) ? "ON" : "OFF");
         s.append("\nWiFi is currently: ").append((wifiManager.isWifiEnabled()) ? "ON" : "OFF");
-        s.append("\n\nWiFiKill kills your WiFi Connection, so you can use your Wired connection.\n\nDisclamer: I have no OUYA, i have no idea if this works!!");
+        s.append("\n\nWiFiKill kills your WiFi Connection, so you can use your Wired connection.\n\nDisclamer: I am not responsible if this does not work!!\n\n(I heard it didnt, because ethernet wont connect if wifi is off)");
         tv.setText(s.toString());
     }
 

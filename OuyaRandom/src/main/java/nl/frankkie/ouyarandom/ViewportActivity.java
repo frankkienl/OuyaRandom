@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 /**
  *
- * @author Gebruiker
+ * @author FrankkieNL
  */
 public class ViewportActivity extends Activity {
 

@@ -2,7 +2,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
-              android:layout_margin="25dp"
+              android:layout_margin="10dp"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
@@ -24,6 +24,7 @@
     </LinearLayout>
 
     <LinearLayout
+            android:orientation="vertical"
             android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="match_parent">
@@ -31,7 +32,41 @@
         <ImageView
                 android:src="@drawable/ouya_controller"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"/>
+        <LinearLayout
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <nl.frankkie.ouyarandom.ControllerAxisView
+                    android:id="@+id/axis_l2"
+                    android:layout_width="50dp"
+                    android:layout_height="150dp"/>
+            <!-- spacer //-->
+            <LinearLayout
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent" />
+            <nl.frankkie.ouyarandom.ControllerAxisView
+                    android:id="@+id/axis_ls"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"/>
+            <!-- spacer //-->
+            <LinearLayout
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent" />
+            <nl.frankkie.ouyarandom.ControllerAxisView
+                    android:id="@+id/axis_rs"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"/>
+            <!-- spacer //-->
+            <LinearLayout
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent" />
+            <nl.frankkie.ouyarandom.ControllerAxisView
+                    android:id="@+id/axis_r2"
+                    android:layout_width="50dp"
+                    android:layout_height="150dp"/>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

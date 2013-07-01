@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 /**
  *
- * @author Gebruiker
+ * @author FrankkieNL
  */
 public class HardwareActivity extends Activity {
 

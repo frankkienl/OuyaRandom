@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
- * @author Gebruiker
+ * @author FrankkieNL
  */
 public class ControllerActivity extends Activity {
 

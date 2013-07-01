@@ -8,13 +8,17 @@ import android.widget.TextView;
 import tv.ouya.console.api.OuyaController;
 
 /**
- * Created by Gebruiker on 29-6-13.
+ * Created by FrankkieNL on 29-6-13.
  */
 public class ControllerTestActivity extends Activity {
 
     TextView tv;
     OuyaController controller;
     int counter =0;
+    ControllerAxisView l2;
+    ControllerAxisView ls;
+    ControllerAxisView rs;
+    ControllerAxisView r2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,18 @@ public class ControllerTestActivity extends Activity {
     protected void initUI() {
         setContentView(R.layout.controller);
         tv = (TextView) findViewById(R.id.controller_tv);
+        l2 = (ControllerAxisView) findViewById(R.id.axis_l2);
+        ls = (ControllerAxisView) findViewById(R.id.axis_ls);
+        rs = (ControllerAxisView) findViewById(R.id.axis_rs);
+        r2 = (ControllerAxisView) findViewById(R.id.axis_r2);
+        l2.setType(ControllerAxisView.TYPE_ONE_AXIS_VERT);
+        ls.setType(ControllerAxisView.TYPE_TWO_AXIS);
+        rs.setType(ControllerAxisView.TYPE_TWO_AXIS);
+        r2.setType(ControllerAxisView.TYPE_ONE_AXIS_VERT);
+        l2.setName("L2");
+        ls.setName("LS");
+        rs.setName("RS");
+        r2.setName("R2");
     }
 
     protected void initController() {
@@ -102,5 +118,10 @@ public class ControllerTestActivity extends Activity {
         sb.append(counter++);
         tv.setText(sb.toString());
         tv.invalidate();
+        //Refresh AxisViews
+        l2.setX(controller.getAxisValue(OuyaController.AXIS_L2));
+        r2.setX(controller.getAxisValue(OuyaController.AXIS_R2));
+        ls.setXY(controller.getAxisValue(OuyaController.AXIS_LS_X),controller.getAxisValue(OuyaController.AXIS_LS_Y));
+        rs.setXY(controller.getAxisValue(OuyaController.AXIS_RS_X),controller.getAxisValue(OuyaController.AXIS_RS_Y));
     }
 }

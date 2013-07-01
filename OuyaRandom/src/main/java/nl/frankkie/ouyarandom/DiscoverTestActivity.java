@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 /**
  *
- * @author Gebruiker
+ * @author FrankkieNL
  */
 public class DiscoverTestActivity extends Activity {
 
