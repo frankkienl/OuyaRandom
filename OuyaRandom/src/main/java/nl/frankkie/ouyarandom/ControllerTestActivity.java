@@ -72,7 +72,7 @@ public class ControllerTestActivity extends Activity {
     }
 
     public void refreshTv() {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder("Controller not working OK?\nChange batteries!\n");
         sb.append("DeviceId: " + controller.getDeviceId());
         sb.append("\n");
         sb.append("PlayerNum: " + controller.getPlayerNum());

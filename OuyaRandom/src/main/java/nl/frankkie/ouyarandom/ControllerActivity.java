@@ -33,7 +33,7 @@ public class ControllerActivity extends Activity {
             }
         });
         Button btn2 = new Button(this);
-        btn2.setText("Click here to start Random Controller Test");
+        btn2.setText("Click here to start Random OUYA Controller Test");
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,7 +46,23 @@ public class ControllerActivity extends Activity {
                 }
             }
         });
+        Button btn3 = new Button(this);
+        btn3.setText("Click here to start the Universal Test (for other controllers)");
+        btn3.setEnabled(false); //not ready for real-world testers !
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent();
+                i.setClass(ControllerActivity.this, UniversalControllerActivity.class);
+                try {
+                    startActivity(i);
+                } catch (Exception e) {
+                    ShowException.showException(e, ControllerActivity.this);
+                }
+            }
+        });
         container.addView(btn2);
+        container.addView(btn3);
         container.addView(btn);
         setContentView(container);
     }

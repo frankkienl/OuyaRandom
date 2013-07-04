@@ -101,7 +101,7 @@ public class AppListActivity extends Activity {
         intent.putExtra("nl.frankkie.randomapp.installedPackagesArray", packagesArr);
         startActivity(intent);
     }
-    //////////////////?//////////////////////
+    ///////////////////////////////////////
     private static final String SCHEME = "package";
     private static final String APP_PKG_NAME_21 = "com.android.settings.ApplicationPkgName";
     private static final String APP_PKG_NAME_22 = "pkg";
