@@ -23,4 +23,24 @@
             android:text="Start Discover using SU (***ROOT***)"
             android:id="@+id/discover3"
             />
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="15dp"></LinearLayout>
+    <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="This is the same way the stock launcher turns of the console.\nAs you may have noticed, the console likes to turn itself back on if the TV is still on.\nIf you really want your OUYA off: Press the powerbutton on the console or pull the power-cord."
+            />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Turn OFF console"
+        android:id="@+id/discover4"
+        />
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Turn OFF console using SU (***ROOT***)"
+            android:id="@+id/discover5"
+            />
 </LinearLayout>
