@@ -33,6 +33,7 @@
         <activity android:name=".ControllerTestActivity"/>
         <activity android:name="tv.ouya.controllertest.ControllerTestActivity" />
         <activity android:name=".ViewportActivity"/>
+        <activity android:name=".ViewportTestActivity"/>
         <activity android:name=".WiFiKillActivity"/>
         <activity android:name=".DiscoverTestActivity"/>
         <activity android:name=".DataUriActivity"/>
