@@ -27,7 +27,7 @@ public class ViewportActivity extends Activity {
                 "But when an Application requests a FullScreen window, that ouya-fix disappears. The application now has to take care of its own overscan-compensation.\n\n" +
                 "This test helps checking how many pixels fall of your screen.\nGive this information to the developer who's application needs overscan-compensation.\n");
         Button btn = (Button) findViewById(R.id.viewport_btn);
-        btn.setEnabled(false); //not ready for prime time
+        //btn.setEnabled(false); //not ready for prime time
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
