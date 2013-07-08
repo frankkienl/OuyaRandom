@@ -2,26 +2,32 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
-              android:layout_margin="25dp"
+              android:layout_margin="20dp"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Start Discover normal (wont work, SecurityException"
-            android:id="@+id/discover1"
+            android:id="@+id/discover_discover_normal"
             />
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Start Discover OLD (Will work, but is useless)"
-            android:id="@+id/discover2"
+            android:id="@+id/discover_discover_old"
             />
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Start Discover using SU (***ROOT***)"
-            android:id="@+id/discover3"
+            android:text="Start Discover using SU 1 (***ROOT***)"
+            android:id="@+id/discover_discover_root1"
+            />
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Start Discover using SU 2 (***ROOT***)"
+            android:id="@+id/discover_discover_root2"
             />
     <LinearLayout
             android:layout_width="match_parent"
@@ -35,12 +41,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Turn OFF console"
-        android:id="@+id/discover4"
+        android:id="@+id/discover_off"
         />
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Turn OFF console using SU (***ROOT***)"
-            android:id="@+id/discover5"
+            android:id="@+id/discover_off_root"
             />
 </LinearLayout>
