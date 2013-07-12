@@ -48,7 +48,7 @@ public class ControllerActivity extends Activity {
         });
         Button btn3 = new Button(this);
         btn3.setText("Click here to start the Universal Test (for other controllers)");
-        btn3.setEnabled(false); //not ready for real-world testers !
+        //btn3.setEnabled(false); //not ready for real-world testers !
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

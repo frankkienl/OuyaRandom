@@ -122,6 +122,13 @@ public class DiscoverTestActivity extends Activity {
                         Toast.makeText(DiscoverTestActivity.this,toastLine, Toast.LENGTH_SHORT).show();
                     }
                 });
+            } else {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(DiscoverTestActivity.this,"SU not available!", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
             return null;
         }
@@ -141,6 +148,13 @@ public class DiscoverTestActivity extends Activity {
                         "am broadcast --user 0 -a tv.ouya.console.action.TURN_OFF"
                 });
 
+            } else {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(DiscoverTestActivity.this,"SU not available!", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
             return null;
         }

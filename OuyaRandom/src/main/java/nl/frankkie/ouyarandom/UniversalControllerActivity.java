@@ -22,25 +22,23 @@ public class UniversalControllerActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initUI();        
+        OuyaController.init(this);
+        initUI();
     }
 
     private void initUI() {
         setContentView(R.layout.universal_controller_test);
+
         linControllers[0] = (LinearLayout) findViewById(R.id.universal_controller_1);
         linControllers[1] = (LinearLayout) findViewById(R.id.universal_controller_2);
         linControllers[2] = (LinearLayout) findViewById(R.id.universal_controller_3);
         linControllers[3] = (LinearLayout) findViewById(R.id.universal_controller_4);
         //
-        tvs[0] = new TextView(this);
-        tvs[1] = new TextView(this);
-        tvs[2] = new TextView(this);
-        tvs[3] = new TextView(this);
-        ///
-        players[0]= new ControllerPlayer();
-        players[1]= new ControllerPlayer();
-        players[2]= new ControllerPlayer();
-        players[3]= new ControllerPlayer();
+        for (int i = 0; i < 4; i++) {
+            tvs[i] = new TextView(this);
+            players[i] = new ControllerPlayer();
+            linControllers[i].addView(tvs[i]);
+        }
     }
 
     @Override
@@ -67,24 +65,24 @@ public class UniversalControllerActivity extends Activity {
         return handled || super.onGenericMotionEvent(event);
     }
 
-    private void checkAxis(MotionEvent event){
+    private void checkAxis(MotionEvent event) {
         int playerNumber = OuyaController.getPlayerNumByDeviceId(event.getDeviceId());
 //        ControllerButton btn = players[playerNumber].getButton(event.);
 //        btn.value = true;
     }
 
-    private void checkButtonDown(KeyEvent event){
+    private void checkButtonDown(KeyEvent event) {
         int playerNumber = OuyaController.getPlayerNumByDeviceId(event.getDeviceId());
-        if (playerNumber < 0){
+        if (playerNumber < 0) {
             playerNumber = 0;
         }
         ControllerButton btn = players[playerNumber].getButton(event.getKeyCode());
         btn.value = true;
     }
 
-    private void checkButtonUp(KeyEvent event){
+    private void checkButtonUp(KeyEvent event) {
         int playerNumber = OuyaController.getPlayerNumByDeviceId(event.getDeviceId());
-        if (playerNumber < 0){
+        if (playerNumber < 0) {
             playerNumber = 0;
         }
         ControllerButton btn = players[playerNumber].getButton(event.getKeyCode());
@@ -92,23 +90,23 @@ public class UniversalControllerActivity extends Activity {
     }
 
     private void refreshTv() {
-        for (int i =0 ; i< 4; i++){
+        for (int i = 0; i < 4; i++) {
             StringBuilder sb = new StringBuilder();
-            sb.append("player ").append(i+1).append("\n");
+            sb.append("player ").append(i + 1).append("\n");
             ControllerPlayer p = players[i];
             sb.append("deviceid ").append("??\n");
-            for (ControllerButton btn : p.buttons){
+            for (ControllerButton btn : p.buttons) {
                 sb.append("Button ").append(btn.keyCode).append(" : ").append(btn.value).append("\n");
             }
-
+            tvs[i].setText(sb.toString());
         }
     }
 
 
     public class ControllerPlayer {
-        public ControllerAxis getAxis(int id){
-            for (int i =0; i<axis.size(); i++){
-                if (axis.get(i).axisNumber == id){
+        public ControllerAxis getAxis(int id) {
+            for (int i = 0; i < axis.size(); i++) {
+                if (axis.get(i).axisNumber == id) {
                     return axis.get(i);
                 }
             }
@@ -117,9 +115,10 @@ public class UniversalControllerActivity extends Activity {
             axis.add(axe);
             return axe;
         }
-        public ControllerButton getButton(int id){
-            for (int i =0; i<buttons.size(); i++){
-                if (buttons.get(i).keyCode == id){
+
+        public ControllerButton getButton(int id) {
+            for (int i = 0; i < buttons.size(); i++) {
+                if (buttons.get(i).keyCode == id) {
                     return buttons.get(i);
                 }
             }
@@ -128,6 +127,7 @@ public class UniversalControllerActivity extends Activity {
             buttons.add(axe);
             return axe;
         }
+
         ArrayList<ControllerAxis> axis = new ArrayList<ControllerAxis>();
         ArrayList<ControllerButton> buttons = new ArrayList<ControllerButton>();
     }
