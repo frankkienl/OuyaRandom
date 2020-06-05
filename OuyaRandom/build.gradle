@@ -1,25 +1,45 @@
+apply plugin: 'com.android.application'
+
+
+repositories {
+    maven { url "https://maven.google.com" }
+    google()
+    mavenCentral()
+}
+
 buildscript {
     repositories {
+        maven { url "https://maven.google.com" }
+        google()
         mavenCentral()
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.4'
-    }
 }
-apply plugin: 'android'
 
-dependencies {
-    compile files('libs/android-support-v4.jar')
-    compile files('libs/ouya-sdk.jar')
-    compile files('libs/Flurry_3.2.1.jar')
-}
+//dependencies {
+//    classpath 'com.android.tools.build:gradle:0.4'
+//}
 
 android {
     compileSdkVersion 17
-    buildToolsVersion "17.0.0"
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
+        applicationId "nl.frankkie.ouyarandom"
         minSdkVersion 16
+        //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 17
+        versionCode 5
+        versionName "1.0"
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation files('libs/android-support-v4.jar')
+    implementation files('libs/ouya-sdk.jar')
+    implementation files('libs/Flurry_3.2.1.jar')
 }

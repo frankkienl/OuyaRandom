@@ -6,6 +6,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 import tv.ouya.console.api.OuyaController;
 
 /**
@@ -18,17 +19,24 @@ public class ShootGameActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (OuyaController.getControllerByPlayer(0) == null) {
+            Toast.makeText(this, "OUYA Controller not found!", Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
+
         initUI();
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        return view.onKeyDown(keyCode,event);
+        return view.onKeyDown(keyCode, event);
     }
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        return view.onKeyUp(keyCode,event);
+        return view.onKeyUp(keyCode, event);
     }
 
     @Override
