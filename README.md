@@ -7,6 +7,20 @@ Download APK: https://github.com/frankkienl/OuyaRandom/releases
 
 ![Screenshot](https://raw.github.com/frankkienl/OuyaRandom/master/screenshots/ouya_controller_test.png "Screenshot")
 
+What does this app do
+---------------------  
+*OUYA Controller test*   
+This app will allow you to check if all the buttons on the OUYA controller are working.  
+Click the "Random Ouya Controller Test"-button in the app, then press some button on the controller,
+if the button is pressed, the screen will show "true", if the button is not pressed, it will say "false".  
+
+*WiFi Killer*  
+The WiFi kill will try to force the WiFi to turn off on the OUYA console. Because WiFi and Bluetooth use 2.4GHz, the WiFi connection is known to cause interference on withe OUYA Controller.  
+
+*Viewport tester*  
+Some TV's have overscan issues, meaning not all pixels that are output-ed by the console are shown on the screen.  
+The Viewport test will allow you to find out how many pixels are not shown on screen. 
+
 Licence
 -------
 
