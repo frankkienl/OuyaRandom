@@ -3,7 +3,7 @@ OUYA Random Tests
 
 Some tests to run on an OUYA.
 
-Download APK: https://github.com/frankkienl/OuyaRandom/raw/master/OuyaRandom/OuyaRandom.apk
+Download APK: https://github.com/frankkienl/OuyaRandom/releases
 
 ![Screenshot](https://raw.github.com/frankkienl/OuyaRandom/master/screenshots/ouya_controller_test.png "Screenshot")
 
